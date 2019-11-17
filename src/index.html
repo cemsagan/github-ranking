@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+	<title>GitHub User Stats</title>
+	<meta charset="utf-8" />
+	<meta name="description" content="GitHub User Stats" />
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<meta name="author" content="Cem Sagan" />
+	<meta name="keywords" content="github" />
+
+	<!-- mobile specific metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
+</head>
+<div id="app">
+	<div class="title-box centered centered-text">
+		<p>GitHub User Stats</p>
+	</div>
+	<div class="user-box centered">
+		<ul class="users">
+			<li class="user" v-for="(user, index) in users">
+				<span class="rank">{{ (perPage * (page - 1)) + index + 1 }}</span>
+				<a class="text" v-bind:href="user.html_url" target="_blank" rel="noreferrer">{{ user.login }}</a>
+				<img class="avatar" v-bind:src="user.avatar_url" />
+			</li>
+		</ul>
+	</div>
+	<div class="nav">
+		<a href="#" v-if="page > 1" v-on:click="prev" class="btn btn-md btn-pill btn-soft-custom transition-3d-hover"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+		<a href="#" v-if="totalUserCount > perPage" v-on:click="next" class="btn btn-md btn-pill btn-soft-custom transition-3d-hover"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+	</div>
+	<div class="footer-box centered centered-text">
+		<span>Cem Sagan</span><br>
+		<a href="https://www.github.com/cemsagan" target="_blank" rel="noreferrer">GitHub</a>
+		<span> | </span>
+		<a href="https://www.linkedin.com/in/cemsagan" target="_blank" rel="noreferrer">LinkedIn</a>
+	</div>
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script>
+	const app = new Vue({
+		el: '#app',
+		methods: {
+			prev: function() {
+				this.page--;
+			},
+			next: function() {
+				this.page++;
+			},
+			getUsers: function() {
+				fetch('https://api.github.com/search/users?q=followers:>0+sort:followers&per_page=' + this.perPage + '&page=' + this.page)
+				.then(response => response.json())
+				.then(json =>  {
+					this.totalUserCount = json.total_count,
+					this.users = json.items
+				})
+			}
+		},
+		watch: {
+			page: function() {
+				this.getUsers();
+			}
+		},
+		data: {
+			page: 1,
+			perPage: 5,
+			totalUserCount: 0,
+			users: []
+		},
+		created: function() {
+			this.getUsers();
+		}
+	})
+</script>
+
+</html>

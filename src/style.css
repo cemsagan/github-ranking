@@ -1,0 +1,183 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.2em;
+    background-color: #f1f1f1;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link,
+a:visited,
+a:active {
+    color: #333;
+}
+
+a:hover {
+    color: #2684FF;
+}
+
+div.centered {
+    margin: 0 auto;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+.title-box {
+    width: 500px;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.title-box>p {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.order-box {
+    width: 500px;
+}
+
+.user-box {
+    border-radius: 6px;
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, .2);
+    width: 500px;
+    height: 439px;
+    background-color: white;
+}
+
+.users {
+    list-style-type: none;
+    padding: 0;
+}
+
+.users>.user {
+    display: table;
+    width: 100%;
+}
+
+.users>.user:first-child {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.users>.user:last-child {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.users>.user:not(:last-child) {
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.users>.user>.text {
+    display: inline-block;
+    padding: 19px 9px;
+    width: 140px;
+}
+
+.users>.user>.avatar {
+    float: left;
+    width: 64px;
+    border-radius: 32px;
+    margin: 10px;
+}
+
+.users>.user:hover {
+    background-color: #f1f1f1;
+}
+
+.user>.rank {
+    float: left;
+    width: 40px;
+    min-height: 87px;
+    background-color: #0052CC;
+    text-align: center;
+    margin: auto 0;
+    color: white;
+    font-size: 1.2em;
+    padding-top: 27px;
+    padding-bottom: 26px;
+}
+
+.user:first-child>.rank {
+    border-top-left-radius: 6px;
+}
+
+.user:last-child>.rank {
+    border-bottom-left-radius: 6px;
+}
+
+.footer-box {
+    font-size: 0.6em;
+    color: #aaaaaa;
+    padding-top: 20px;
+}
+
+/*------------------------------------
+  Navigation
+------------------------------------*/
+.nav {
+  text-align: center;
+  display: block;
+  padding: 30px;
+}
+
+.nav .fa {
+  font-size: 1.5em;
+}
+
+/*------------------------------------
+  Air Button Styles
+------------------------------------*/
+  /* Custom Air */
+  .btn-soft-custom {
+    color: #77838f;
+    background: rgba(119, 131, 143, 0.1);
+    border-color: transparent;
+    cursor: pointer;
+  }
+  
+  .btn-soft-custom[href]:hover, .btn-soft-custom[href]:focus, .btn-soft-custom[href]:active, .btn-soft-custom[href].active, .btn-soft-custom[type]:hover, .btn-soft-custom[type]:focus, .btn-soft-custom[type]:active, .btn-soft-custom[type].active {
+    color: #fff;
+    background: #377dff;
+    box-shadow: 0 4px 11px rgba(55, 125, 255, 0.35);
+  }
+  
+  .btn-soft-custom[href].disabled, .btn-soft-custom[href]:disabled, .btn-soft-custom[type].disabled, .btn-soft-custom[type]:disabled {
+    color: #77838f;
+    background-color: rgba(119, 131, 143, 0.1);
+    box-shadow: none;
+  }
+  
+  .btn-soft-custom[href]:not(:disabled):not(.disabled):active, .btn-soft-custom[href]:not(:disabled):not(.disabled).active,
+  .show > .btn-soft-custom[href].dropdown-toggle, .btn-soft-custom[type]:not(:disabled):not(.disabled):active, .btn-soft-custom[type]:not(:disabled):not(.disabled).active,
+  .show > .btn-soft-custom[type].dropdown-toggle {
+    color: #fff;
+    background-color: #377dff;
+  }
+  
+  .btn.btn-soft-custom {
+    color: #77838f;
+  }
+  
+  /* Pill */
+  .btn-pill {
+    border-radius: 6.1875rem;
+  }
+  
+  /*------------------------------------
+    Transitions
+  ------------------------------------*/
+  /* 3D Hover */
+  .transition-3d-hover {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .transition-3d-hover:hover, .transition-3d-hover:focus {
+    -webkit-transform: translateY(-3px);
+            transform: translateY(-3px);
+  }
